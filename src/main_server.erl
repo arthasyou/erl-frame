@@ -76,7 +76,7 @@ handle_info({mfa, {M, F, A}}, State) ->
 	{noreply, State};
 
 handle_info(kill, State) ->
-	{stop, kill, State};
+	{stop, normal, State};
 
 handle_info({'EXIT', _PID, _Reason}, State) ->
     erlang:send_after(?RECONNECT_TIME, self(), kill),
